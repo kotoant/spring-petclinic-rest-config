@@ -1,0 +1,38 @@
+# Actuator
+management.endpoints.web.exposure.include: "*"
+
+server:
+  port: 9966
+  servlet:
+    context-path: /petclinic/
+
+spring:
+  web:
+    locale-resolver: fixed
+    locale: en
+  webflux:
+    base-path: /petclinic
+  main:
+    web-application-type: servlet
+  codec:
+    maxInMemorySize: 10MB
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+  liquibase:
+    enabled: false
+  profiles:
+    group:
+      webmvc-jdbc: jdbc
+      webmvc-jdbc-loom: jdbc,loom
+      webflux-jdbc-reactive: jdbc,reactive
+      webflux-jdbc-loom: jdbc,reactive,loom
+      webflux-jdbc-coroutine: jdbc,coroutine
+      webflux-r2dbc-reactive: r2dbc,reactive
+      webflux-r2dbc-coroutine: r2dbc,coroutine
+    default: webmvc-jdbc
+logging:
+  level:
+    ROOT: INFO
