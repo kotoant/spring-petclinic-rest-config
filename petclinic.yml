@@ -1,17 +1,23 @@
 # Actuator
 management.endpoints.web.exposure.include: "*"
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+        add-additional-paths: true
 
 server:
   port: 9966
   servlet:
-    context-path: /petclinic/
+    context-path: /
 
 spring:
   web:
     locale-resolver: fixed
     locale: en
   webflux:
-    base-path: /petclinic
+    base-path: /
   main:
     web-application-type: servlet
   codec:
@@ -36,3 +42,47 @@ spring:
 logging:
   level:
     ROOT: INFO
+
+---
+
+spring.config.activate.on-profile: reactive,coroutine
+spring:
+  main:
+    web-application-type: reactive
+
+---
+
+spring.config.activate.on-profile: jdbc
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost:5432}/${DB_NAME:petclinic}
+    username: ${DB_USERNAME:petclinic}
+    password: ${DB_PASSWORD:petclinic}
+    hikari:
+      connection-timeout: 30000 # 30 seconds
+      idle-timeout: 300000 # 5 minutes
+      max-lifetime: 1800000 # 30 minutes
+      connection-test-query: select 1
+      minimum-idle: 1
+      maximum-pool-size: 10
+      pool-name: spring-hikari
+
+---
+
+spring.config.activate.on-profile: r2dbc
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST:localhost:5432}/${DB_NAME:petclinic}
+    username: ${DB_USERNAME:petclinic}
+    password: ${DB_PASSWORD:petclinic}
+    pool:
+      maxIdleTime: PT5M
+      maxLifeTime: PT30M
+      maxAcquireTime: PT30S
+      maxCreateConnectionTime: PT30S
+      initialSize: 1
+      maxSize: 10
+      validationQuery: select 1
+    properties:
+      preparedStatementCacheQueries: 256
+      options: idle_in_transaction_session_timeout=30000;
