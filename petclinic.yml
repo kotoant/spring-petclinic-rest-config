@@ -11,6 +11,7 @@ server:
   port: 9966
   servlet:
     context-path: /
+  forward-headers-strategy: framework
 
 spring:
   web:
