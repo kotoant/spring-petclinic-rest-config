@@ -73,8 +73,8 @@ spring:
       idle-timeout: 300000 # 5 minutes
       max-lifetime: 1800000 # 30 minutes
       connection-test-query: select 1
-      minimum-idle: 10
-      maximum-pool-size: 20
+      minimum-idle: 8
+      maximum-pool-size: 8
       pool-name: spring-hikari
 
 ---
@@ -90,8 +90,8 @@ spring:
       maxLifeTime: PT30M
       maxAcquireTime: PT30S
       maxCreateConnectionTime: PT30S
-      initialSize: 10
-      maxSize: 20
+      initialSize: 8
+      maxSize: 8
       validationQuery: select 1
     properties:
       preparedStatementCacheQueries: 256
