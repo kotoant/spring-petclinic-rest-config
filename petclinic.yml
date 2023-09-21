@@ -14,13 +14,14 @@ server:
   forward-headers-strategy: framework
   undertow:
     threads:
-      worker: 1000
+      io: 8
+      worker: 100
   tomcat:
     threads:
-      max: 1000
+      max: 100
   jetty:
     threads:
-      max: 1000
+      max: 100
 
 spring:
   web:
