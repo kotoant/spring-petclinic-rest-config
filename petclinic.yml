@@ -15,13 +15,13 @@ server:
   undertow:
     threads:
       io: 8
-      worker: 100
+      worker: 64
   tomcat:
     threads:
-      max: 100
+      max: 64
   jetty:
     threads:
-      max: 100
+      max: 64
 
 spring:
   web:
