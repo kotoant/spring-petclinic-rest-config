@@ -18,7 +18,7 @@ server:
       worker: 64
   tomcat:
     threads:
-      max: 64
+      max: 16
   jetty:
     threads:
       max: 64
