@@ -21,6 +21,8 @@ server:
   tomcat:
     threads:
       max: 16
+    mbeanregistry:
+      enabled: true
   jetty:
     threads:
       max: 64
