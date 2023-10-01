@@ -6,6 +6,8 @@ management:
       probes:
         enabled: true
         add-additional-paths: true
+    configprops:
+      show-values: ALWAYS
 
 server:
   port: 9966
