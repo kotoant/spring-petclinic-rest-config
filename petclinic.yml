@@ -17,7 +17,7 @@ server:
   undertow:
     threads:
       io: 8
-      worker: 64
+      worker: 16
   tomcat:
     threads:
       max: 16
