@@ -79,7 +79,7 @@ spring:
       max-lifetime: 1800000 # 30 minutes
       connection-test-query: select 1
       minimum-idle: 1
-      maximum-pool-size: 8
+      maximum-pool-size: 32
       pool-name: spring-hikari
 
 ---
@@ -96,7 +96,7 @@ spring:
       maxAcquireTime: PT30S
       maxCreateConnectionTime: PT30S
       initialSize: 1
-      maxSize: 8
+      maxSize: 32
       validationQuery: select 1
     properties:
       preparedStatementCacheQueries: 256
