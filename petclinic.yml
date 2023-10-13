@@ -20,7 +20,7 @@ server:
       worker: 200
   tomcat:
     threads:
-      max: 140
+      max: 200
     mbeanregistry:
       enabled: true
   jetty:
