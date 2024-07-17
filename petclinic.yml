@@ -20,7 +20,7 @@ server:
       worker: 200
   tomcat:
     threads:
-      max: 16
+      max: 4
     mbeanregistry:
       enabled: true
   jetty:
@@ -78,8 +78,8 @@ spring:
       idle-timeout: 300000 # 5 minutes
       max-lifetime: 1800000 # 30 minutes
       connection-test-query: select 1
-      minimum-idle: 8
-      maximum-pool-size: 8
+      minimum-idle: 2
+      maximum-pool-size: 2
       pool-name: spring-hikari
 
 ---
